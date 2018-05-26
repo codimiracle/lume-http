@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
-class HttpResponse {
+public class HttpResponse {
     private HttpURLConnection httpURLConnection;
     protected HttpResponse(HttpURLConnection httpURLConnection) {
         this.httpURLConnection = httpURLConnection;

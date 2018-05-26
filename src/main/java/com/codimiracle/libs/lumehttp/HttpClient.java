@@ -10,16 +10,25 @@ import java.net.URL;
 /**
  * Base on {@code HttpUrlConnection }
  */
-public class HttpClient implements AutoCloseable {
-
+public class HttpClient {
+    private static final int DEFAULT_TIMEOUT = 1000;
+    private static final String USER_AGENT_HEADER = "User-Agent";
     private String cookie;
     private URL url;
+    private String userAgent;
     private CookieManager cookieManager;
     private HttpURLConnection httpURLConnection;
 
     public HttpClient() {
-        cookieManager = new CookieManager();
+    }
+
+    public void setCookieManager(CookieManager cookieManager) {
+        this.cookieManager = cookieManager;
         CookieHandler.setDefault(cookieManager);
+    }
+
+    public CookieManager getCookieManager() {
+        return cookieManager;
     }
 
     public void open(URL url) throws IOException {
@@ -29,6 +38,25 @@ public class HttpClient implements AutoCloseable {
         }
         this.url = url;
         httpURLConnection = (HttpURLConnection) url.openConnection();
+        httpURLConnection.setConnectTimeout(DEFAULT_TIMEOUT);
+        if (userAgent != null)
+            httpURLConnection.setRequestProperty(USER_AGENT_HEADER, userAgent);
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
+
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setConnectTimeout(int milliseconds) {
+        httpURLConnection.setConnectTimeout(milliseconds);
+    }
+
+    public int getConnectTimeout() {
+        return httpURLConnection.getConnectTimeout();
     }
 
     public HttpRequest getHttpRequest() throws IOException {
@@ -50,8 +78,6 @@ public class HttpClient implements AutoCloseable {
         return new HttpResponse(httpURLConnection);
     }
 
-
-    @Override
     public void close() {
         httpURLConnection.disconnect();
     }
