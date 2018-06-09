@@ -11,7 +11,7 @@ import java.net.URL;
  * Base on {@code HttpUrlConnection }
  */
 public class HttpClient {
-    private static final int DEFAULT_TIMEOUT = 1000;
+    private static final int DEFAULT_TIMEOUT = 500;
     private static final String USER_AGENT_HEADER = "User-Agent";
     private String cookie;
     private URL url;

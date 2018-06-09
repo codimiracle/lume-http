@@ -13,7 +13,7 @@ public class HttpClientTest {
     public void setUp() {
         httpClient = new HttpClient();
     }
-    @Test
+
     public void TestConnection() {
         try {
             URL url = new URL("http://localhost/castore-server/?q=/User/SignIn");
