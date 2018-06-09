@@ -11,13 +11,16 @@ import java.net.URL;
  * Base on {@code HttpUrlConnection }
  */
 public class HttpClient {
-    private static final int DEFAULT_TIMEOUT = 1000;
+    private static final int DEFAULT_TIMEOUT = 500;
     private static final String USER_AGENT_HEADER = "User-Agent";
     private String cookie;
     private URL url;
     private String userAgent;
     private CookieManager cookieManager;
     private HttpURLConnection httpURLConnection;
+
+    private HttpRequest request;
+    private HttpResponse response;
 
     public HttpClient() {
     }
@@ -65,7 +68,10 @@ public class HttpClient {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        return new HttpRequest(httpURLConnection);
+        if (request == null) {
+            request = new HttpRequest(httpURLConnection);
+        }
+        return request;
     }
 
     public HttpResponse getHttpResponse() throws IOException {
@@ -75,7 +81,10 @@ public class HttpClient {
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
-        return new HttpResponse(httpURLConnection);
+        if (response == null) {
+            response = new HttpResponse(httpURLConnection);
+        }
+        return response;
     }
 
     public void close() {
