@@ -1,10 +1,8 @@
-package com.codimiracle.libs.lumehttp.enums;
+package com.codimiracle.http.lume_http.enums;
 
 public enum HttpHeader {
     CONTENT_TYPE("Content-Type"),
-    USER_AGENT("User-Agent")
-
-    ;
+    USER_AGENT("User-Agent");
 
     private String headerName;
 

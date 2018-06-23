@@ -1,6 +1,6 @@
-package com.codimiracle.libs.lumehttp;
+package com.codimiracle.http.lume_http;
 
-import com.codimiracle.libs.lumehttp.enums.HttpHeader;
+import com.codimiracle.http.lume_http.enums.HttpHeader;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,8 +10,7 @@ import java.net.ProtocolException;
 public class HttpRequest {
     public enum RequestMethod {
         POST("POST"),
-        GET("GET")
-        ;
+        GET("GET");
 
         private String method;
 

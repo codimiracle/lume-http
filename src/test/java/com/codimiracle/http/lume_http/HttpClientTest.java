@@ -1,7 +1,8 @@
-package com.codimiracle.libs.lumehttp;
+package com.codimiracle.http.lume_http;
+
+import com.codimiracle.http.lume_http.http.FormData;
 
 import org.junit.Before;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

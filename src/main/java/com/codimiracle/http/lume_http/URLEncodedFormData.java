@@ -1,4 +1,4 @@
-package com.codimiracle.libs.lumehttp;
+package com.codimiracle.http.lume_http;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -28,6 +28,7 @@ public class URLEncodedFormData extends FormData {
     protected Enctype getEnctype() {
         return Enctype.URLENCODED;
     }
+
     @Override
     protected String getFormRequestData() {
         String step = "";
@@ -38,7 +39,8 @@ public class URLEncodedFormData extends FormData {
             builder.append('=');
             builder.append(entry.getValue());
             step = "&";
-        };
+        }
+        ;
         return builder.toString();
     }
 }

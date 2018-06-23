@@ -1,6 +1,6 @@
-package com.codimiracle.libs.lumehttp;
+package com.codimiracle.http.lume_http;
 
-import com.codimiracle.libs.lumehttp.enums.HttpHeader;
+import com.codimiracle.http.lume_http.enums.HttpHeader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,9 +9,11 @@ import java.net.HttpURLConnection;
 
 public class HttpResponse {
     private HttpURLConnection httpURLConnection;
+
     protected HttpResponse(HttpURLConnection httpURLConnection) {
         this.httpURLConnection = httpURLConnection;
     }
+
     public InputStream getInputStream() throws IOException {
         return httpURLConnection.getInputStream();
     }
@@ -23,9 +25,11 @@ public class HttpResponse {
     public int getResponseCode() throws IOException {
         return httpURLConnection.getResponseCode();
     }
+
     public String getResponseMessage() throws IOException {
         return httpURLConnection.getResponseMessage();
     }
+
     public String getResponseBody() throws IOException {
         StringBuilder builder = new StringBuilder();
         char[] buffer = new char[1024];

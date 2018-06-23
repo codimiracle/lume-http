@@ -1,4 +1,4 @@
-package com.codimiracle.libs.lumehttp;
+package com.codimiracle.http.lume_http;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,8 +8,7 @@ public abstract class FormData {
     public enum Enctype {
         URLENCODED("application/x-www-form-urlencoded"),
         MULTIPART("multipart/form-data"),
-        TEXT("text/plain")
-        ;
+        TEXT("text/plain");
         private String enctype;
 
         Enctype(String enctype) {
