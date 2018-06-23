@@ -1,5 +1,7 @@
 package com.codimiracle.libs.lumehttp;
 
+import com.codimiracle.libs.lumehttp.enums.HttpHeader;
+
 import java.io.IOException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -12,8 +14,6 @@ import java.net.URL;
  */
 public class HttpClient {
     private static final int DEFAULT_TIMEOUT = 500;
-    private static final String USER_AGENT_HEADER = "User-Agent";
-    private String cookie;
     private URL url;
     private String userAgent;
     private CookieManager cookieManager;
@@ -43,7 +43,7 @@ public class HttpClient {
         httpURLConnection = (HttpURLConnection) url.openConnection();
         httpURLConnection.setConnectTimeout(DEFAULT_TIMEOUT);
         if (userAgent != null)
-            httpURLConnection.setRequestProperty(USER_AGENT_HEADER, userAgent);
+            httpURLConnection.setRequestProperty(HttpHeader.USER_AGENT.toString(), userAgent);
     }
 
     public void setUserAgent(String userAgent) {

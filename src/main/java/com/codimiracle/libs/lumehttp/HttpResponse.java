@@ -1,5 +1,7 @@
 package com.codimiracle.libs.lumehttp;
 
+import com.codimiracle.libs.lumehttp.enums.HttpHeader;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,8 +16,8 @@ public class HttpResponse {
         return httpURLConnection.getInputStream();
     }
 
-    public String getResponseHeader(String key) {
-        return httpURLConnection.getHeaderField(key);
+    public String getResponseHeader(HttpHeader key) {
+        return httpURLConnection.getHeaderField(key.toString());
     }
 
     public int getResponseCode() throws IOException {
